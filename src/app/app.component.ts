@@ -9,10 +9,12 @@ export class AppComponent {
   constructor(){
     this.end=this.getEnd();
   }
+  isExist=false;
   title = 'pagination';
   currentPage=0;
   start=0;
   end=0;
+  pageSize=5;
   images=[
     {
       title:'at the beach',

@@ -20,3 +20,22 @@
   <h2>{{images[currentPage-1]?.title}}</h2>
 <img [src]="images[currentPage]?.url" style="max-width: 250px;max-height: 250px;">
 </div>
+<!-- <p *ngIf="isExist;else forelse">item found</p>
+<ng-template #forelse>
+  <p >item not found</p>
+</ng-template>
+<div [ngSwitch]="pageSize">
+<p *ngSwitchCase="20">
+page size small
+</p>
+<p *ngSwitchCase="30">
+  page size medium
+</p>
+<p *ngSwitchCase="40">
+  page size larg
+</p> 
+
+<p *ngSwitchDefault>
+ page size is {{pageSize}}
+</p>
+</div>-->
