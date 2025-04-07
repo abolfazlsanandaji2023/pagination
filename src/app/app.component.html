@@ -1,9 +1,12 @@
 <nav aria-label="...">
   <ul class="pagination">
-    <li class="page-item " [ngClass]="{disabled: currentPage===0}">
-      <a (click)="onBackClick()" class="page-link" href="#">Previous</a>
+    <!-- <li class="page-item " [ngClass]="{disabled: currentPage===0}"> -->
+      <li class="page-item " [appSetClass]="{disabled: currentPage===0}" >
+      <a [ngStyle]="{'background-color' : currentPage===0 ? 'red' : 'yellow' }" (click)="onBackClick()" class="page-link" href="#" >Previous</a>
+      <!-- [ngStyle]="{'background-color': currentPage === 0 ? 'red' : 'transparent'}"  -->
     </li>
-    <ng-container  *ngFor="let image of images;let i=index">
+    <!-- <ng-container  *ngFor="let image of images;let i=index"> -->
+    <ng-container *appTimeRef="images.length;let i=index;let color=color">
       <li *ngIf="checkwindowsIndex(i)"  [ngClass]="setActiveClass(i)"  class="page-item">
         <a (click)="onClick(i)" class="page-link" href="#">{{i+1}}</a>
       </li>
@@ -16,10 +19,22 @@
   </ul>
 
 </nav>
+
+  <ng-container *ngIf="images">
 <div>
-  <h2>{{images[currentPage-1]?.title}}</h2>
-<img [src]="images[currentPage]?.url" style="max-width: 250px;max-height: 250px;">
+  <h2>{{images[currentPage]?.title}}</h2>
+<img [src]="images[currentPage]?.url" style="width: 250px;height: 250px;">
+
 </div>
+  </ng-container>
+  
+
+<ul >
+  <li *appTimeRef="4">
+    test
+  </li>
+  <input type="text" [disabled]="currentPage===0">
+</ul>
 <!-- <p *ngIf="isExist;else forelse">item found</p>
 <ng-template #forelse>
   <p >item not found</p>
